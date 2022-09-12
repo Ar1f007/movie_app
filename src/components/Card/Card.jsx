@@ -1,6 +1,6 @@
 import { CardContent, CardMedia, Typography, Card as Container, Chip, Stack } from '@mui/material';
 
-const baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
+const baseURL = process.env.REACT_APP_IMAGE_BASE_PATH;
 
 export const Card = ({ title, poster, avg_rating }) => {
   return (

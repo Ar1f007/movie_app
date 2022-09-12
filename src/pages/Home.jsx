@@ -27,7 +27,7 @@ export const Home = () => {
           <List type={selectedType} />
         </Box>
 
-        <Box flex={1} sx={{ backgroundColor: 'yellow' }}>
+        <Box flex={1}>
           <Box sx={stickyStyle}>
             <RightBar />
           </Box>
