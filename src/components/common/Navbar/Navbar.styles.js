@@ -1,10 +1,11 @@
 import { Box, IconButton, InputBase, Stack, styled, Toolbar, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
-export const StyledToolbar = styled(Toolbar)({
+export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
-});
+  [theme.breakpoints.up('lg')]: { paddingInline: 0 },
+}));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: 30,
@@ -24,13 +25,12 @@ export const StyledNavLink = styled(NavLink)({
 
 export const SearchBox = styled(Box)(({ theme }) => ({
   display: 'flex',
-  gap: 5,
-
+  alignItems: 'center',
   [theme.breakpoints.down('md')]: { width: '14ch' },
 }));
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  border: `1px solid ${theme.palette.primary.contrastText}`,
+  border: `1px solid ${theme.palette.primary.dark}`,
   borderRadius: theme.shape.borderRadius,
   padding: '0 20px',
   color: theme.palette.primary.contrastText,

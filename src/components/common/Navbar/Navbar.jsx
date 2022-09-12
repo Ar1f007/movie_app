@@ -24,12 +24,7 @@ export const Navbar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <StyledToolbar
-          component="nav"
-          disableGutters={{
-            lg: true,
-          }}
-        >
+        <StyledToolbar component="nav">
           {/* logo */}
           <Box>
             <Typography variant="h6">MovieApp</Typography>
@@ -50,10 +45,11 @@ export const Navbar = () => {
           </StyledStack>
           {/* Nav links */}
 
-          <SearchBox>
+          <SearchBox component="form">
             <StyledInputBase placeholder="search..." />
           </SearchBox>
 
+          {/* Mobile menu -- icon*/}
           <StyledIconButton color="inherit" size="large" onClick={() => setOpen(!open)}>
             <MenuIcon />
           </StyledIconButton>
@@ -94,6 +90,7 @@ export const Navbar = () => {
               ))}
             </Stack>
           </Menu>
+          {/* Mobile menu */}
         </StyledToolbar>
       </Container>
     </AppBar>
