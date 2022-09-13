@@ -9,3 +9,4 @@ export { Card } from './Card/Card';
 
 export { default as RightBar } from './RightBar/RightBar';
 export { default as List } from './List/List';
+export {default as AddForm} from './AddForm/AddForm'

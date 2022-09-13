@@ -64,7 +64,7 @@ const Details = ({ detail, fetchDetails, fetching }) => {
               </Typography>
 
               <Typography variant="body2">
-                {detail.vote_average.toFixed(1)} ({detail?.vote_count})
+                {detail.vote_average.toFixed(1)}
               </Typography>
             </Stack>
           </Box>
