@@ -33,7 +33,7 @@ export const fetchData = (type) => {
     dispatch(fetchDataRequest());
 
     try {
-      apiRequest.get(`/${type}/top_rated`).then((res) => {
+      apiRequest.get(`/${type}/popular`).then((res) => {
         dispatch(fetchDataSuccess(res.data.results));
       });
     } catch (error) {

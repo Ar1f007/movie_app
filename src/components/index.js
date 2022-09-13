@@ -1,4 +1,5 @@
 export { Navbar } from './common/Navbar/Navbar';
+export { Footer } from './common/Footer/Footer';
 export { Hero } from './Hero/Hero';
 export { default as Details } from './Details/Details';
 export { LeftBar } from './LeftBar/LeftBar';

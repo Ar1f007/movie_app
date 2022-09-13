@@ -42,7 +42,7 @@ const List = ({ type, topRated, fetchData }) => {
   return (
     <Box component="section">
       <Typography component="h3" sx={style}>
-        Top rated &mdash; {type === 'movie' ? 'movies' : 'tv shows'}
+        Popular {type === 'movie' ? 'movies' : 'tv shows'}
       </Typography>
 
       <Grid container spacing={2} my={3} padding={{ xs: 2, lg: 0 }}>
