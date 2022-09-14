@@ -15,6 +15,7 @@ const style = {
   justifyContent: 'center',
   alignItems: 'center',
 };
+
 export const Hero = () => {
   return (
     <Box sx={style}>
@@ -36,7 +37,10 @@ export const Hero = () => {
         <Typography
           align="left"
           variant="h3"
-          sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}
+          sx={{
+              fontWeight: 'bold',
+              color: theme => theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[100]
+        }}
         >
           Welcome.
         </Typography>
@@ -45,7 +49,10 @@ export const Hero = () => {
           align="left"
           component="p"
           variant="h6"
-          sx={{ fontWeight: 100, color: 'primary.contrastText' }}
+          sx={{
+              fontWeight: 100,
+              color: theme => theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[100]
+          }}
         >
           Millions of movies, TV shows and people to discover. Explore now.
         </Typography>

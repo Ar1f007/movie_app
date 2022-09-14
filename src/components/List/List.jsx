@@ -16,6 +16,7 @@ const style = {
     lg: 22,
     xs: 16,
   },
+  color: theme => theme.palette.mode === 'dark' ? '#fff' : '#000'
 };
 
 /**

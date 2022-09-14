@@ -5,11 +5,11 @@ export const links = [
   },
   {
     path: '/movies',
-    name: 'Movie',
+    name: 'Movies',
   },
   {
-    path: '/tv',
-    name: 'TV',
+    path: '/tv-show',
+    name: 'TV Shows',
   },
   {
     path: '/contact-us',

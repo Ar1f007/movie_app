@@ -30,10 +30,10 @@ export const SearchBox = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  border: `1px solid ${theme.palette.primary.dark}`,
+  border: `1px solid #ddd`,
   borderRadius: theme.shape.borderRadius,
   padding: '0 20px',
-  color: theme.palette.primary.contrastText,
+  color: '#fff',
 }));
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({

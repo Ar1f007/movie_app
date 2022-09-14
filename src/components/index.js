@@ -1,3 +1,5 @@
+export { Container } from './Container/Container';
+
 export { Navbar } from './common/Navbar/Navbar';
 export { Footer } from './common/Footer/Footer';
 export { Hero } from './Hero/Hero';

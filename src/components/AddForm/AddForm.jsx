@@ -9,6 +9,9 @@ import {
     Select,
     MenuItem, Rating
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { addMovie, addTvShow } from '../../store/movie_tv/actions';
+import { useNavigate } from 'react-router-dom';
 
 const marks = [
     {
@@ -30,20 +33,22 @@ const marks = [
 ]
 
 const AddForm = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const [values, setValues] = useState({
         title: '',
         overview:'',
         vote_average: 0,
         tagline: '',
         release_date: '',
+        poster_path: ''
     });
 
     const [type, setType] = useState('');
     const handleType = e => {
         setType(e.target.value)
     }
-
-
 
     const handleChange = e => {
         const name = e.target.name;
@@ -58,7 +63,16 @@ const AddForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        console.log(values);
+        if(type === 'movie') {
+            dispatch(addMovie(values));
+
+            setTimeout(()=> navigate('/movies'), 2000);
+
+        } else {
+            dispatch(addTvShow(values));
+
+            setTimeout(()=> navigate('/tv-show'), 2000);
+        }
     }
 
     return (

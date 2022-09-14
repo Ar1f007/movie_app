@@ -49,7 +49,9 @@ const RightBar = ({ trending, fetchTrending, upcomingMovies, fetchUpcomingMovies
               <ListItemAvatar>
                 <Avatar variant="square" alt={item.title} src={`${baseURL}/${item.poster_path}`} />
               </ListItemAvatar>
-              <ListItemText primary={item.title || 'N/A'} />
+              <ListItemText primary={item.title || 'N/A'} sx={{
+                color: (theme) => theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800]
+              }}/>
             </ListItem>
             <Divider variant="inset" component="li" />
           </Fragment>
@@ -67,7 +69,9 @@ const RightBar = ({ trending, fetchTrending, upcomingMovies, fetchUpcomingMovies
               <ListItemAvatar>
                 <Avatar variant="square" alt={item.title} src={`${baseURL}/${item.poster_path}`} />
               </ListItemAvatar>
-              <ListItemText primary={item.title || 'N/A'} secondary={item.release_date} />
+              <ListItemText primary={item.title || 'N/A'} secondary={item.release_date} sx={{
+                color: (theme) => theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800]
+              }} />
             </ListItem>
             <Divider variant="inset" component="li" />
           </Fragment>

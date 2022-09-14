@@ -1,4 +1,4 @@
-import { AppBar, Box, Container, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { AppBar, Box, Container, Menu, MenuItem, Stack, Switch, Typography } from '@mui/material';
 import {
   StyledStack,
   StyledToolbar,
@@ -9,7 +9,9 @@ import {
 } from './Navbar.styles';
 import { links } from '../../../utils/navLinks';
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {changeTheme} from '../../../store/theme/actions';
 
 let activeStyle = {
   textDecoration: 'underline',
@@ -18,8 +20,15 @@ let activeStyle = {
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const dispatch = useDispatch()
 
+  const handleChange = e => setChecked(e.target.checked);
   const handleCloseNavMenu = () => setOpen(false);
+
+  useEffect(()=> {
+   dispatch(changeTheme());
+  },[checked]);
 
   return (
     <AppBar position="static">
@@ -48,6 +57,13 @@ export const Navbar = () => {
           <SearchBox component="form">
             <StyledInputBase placeholder="search..." />
           </SearchBox>
+
+          <Switch
+            checked={checked}
+            onChange={handleChange}
+            color='default'
+            inputProps={{'aria-label' : 'toggle-mode-from-light-to-dark-vice-versa'}}
+          />
 
           {/* Mobile menu -- icon*/}
           <StyledIconButton color="inherit" size="large" onClick={() => setOpen(!open)}>
