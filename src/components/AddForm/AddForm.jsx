@@ -3,7 +3,6 @@ import {
     Stack,
     TextField,
     Button,
-    Slider,
     FormControl,
     FormLabel,
     InputLabel,
@@ -35,7 +34,6 @@ const AddForm = () => {
         title: '',
         overview:'',
         vote_average: 0,
-        poster_path: '',
         tagline: '',
         release_date: '',
     });
@@ -45,17 +43,23 @@ const AddForm = () => {
         setType(e.target.value)
     }
 
-    console.log(type);
+
 
     const handleChange = e => {
+        const name = e.target.name;
+        const value = e.target.value;
 
+        setValues(prev => ({
+            ...prev,
+            [name]: value
+        }))
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('clicked')
-    }
 
+        console.log(values);
+    }
 
     return (
         <Stack rowGap={1} component='form' onSubmit={handleSubmit}>
@@ -85,6 +89,21 @@ const AddForm = () => {
                 value={values.tagline}
                 onChange={handleChange}
             />
+
+            <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                <Select
+                    labelId="select-type"
+                    id="select-type"
+                    label="Type"
+                    value={type}
+                    onChange={handleType}
+                >
+                    <MenuItem value='movie'>Movie</MenuItem>
+                    <MenuItem value='tv'>TV Show</MenuItem>
+                </Select>
+            </FormControl>
+
             <FormControl>
                 <FormLabel required sx={{fontSize: '16px'}}>Release Date</FormLabel>
                 <TextField
@@ -99,21 +118,6 @@ const AddForm = () => {
 
             <FormControl required>
                 <FormLabel sx={{fontSize: '16px'}}>Rating (1-10)</FormLabel>
-                {/*<Slider*/}
-                {/*    sx={{*/}
-                {/*        color: theme => theme.palette.mode === 'light' ? theme.palette.grey[500] : theme.palette.gray[800]*/}
-                {/*    }}*/}
-                {/*    size="small"*/}
-                {/*    valueLabelDisplay='auto'*/}
-                {/*    max={10}*/}
-                {/*    name='vote_average'*/}
-                {/*    step={0.1}*/}
-                {/*    marks={marks}*/}
-                {/*    value={values.vote_average}*/}
-                {/*    onChange={handleChange}*/}
-                {/*    required*/}
-
-                {/*/>*/}
                 <Rating
                     name='vote_average'
                     defaultValue={7}
@@ -123,19 +127,7 @@ const AddForm = () => {
                     onChange={handleChange}
                 />
             </FormControl>
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Type</InputLabel>
-                <Select
-                    labelId="select-type"
-                    id="select-type"
-                    label="Type"
-                    value={type}
-                    onChange={handleType}
-                >
-                    <MenuItem value='movie'>Movie</MenuItem>
-                    <MenuItem value='tv'>TV Show</MenuItem>
-                </Select>
-            </FormControl>
+
             <Button type='submit' variant='contained'>Submit</Button>
         </Stack>
     );
