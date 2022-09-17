@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import dayjs from 'dayjs';
 import {
     Stack,
     TextField,
@@ -9,28 +10,11 @@ import {
     Select,
     MenuItem, Rating
 } from '@mui/material';
+
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { useDispatch } from 'react-redux';
 import { addMovie, addTvShow } from '../../store/movie_tv/actions';
 import { useNavigate } from 'react-router-dom';
-
-const marks = [
-    {
-        value: 0,
-        label: 0
-    },
-    {
-        value: 3,
-        label: 3
-    },
-    {
-        value: 7,
-        label: 7
-    },
-    {
-        value: 10,
-        label: 10
-    },
-]
 
 const AddForm = () => {
     const dispatch = useDispatch();
@@ -41,11 +25,12 @@ const AddForm = () => {
         overview:'',
         vote_average: 0,
         tagline: '',
-        release_date: '',
         poster_path: ''
     });
 
     const [type, setType] = useState('');
+    const [date, setDate] = useState(dayjs());
+
     const handleType = e => {
         setType(e.target.value)
     }
@@ -62,16 +47,15 @@ const AddForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        const data = {...values, release_date: date}
 
         if(type === 'movie') {
-            dispatch(addMovie(values));
-
-            setTimeout(()=> navigate('/movies'), 2000);
+            dispatch(addMovie(data));
+            navigate('/movies');
 
         } else {
-            dispatch(addTvShow(values));
-
-            setTimeout(()=> navigate('/tv-show'), 2000);
+            dispatch(addTvShow(data));
+            navigate('/tv-shows');
         }
     }
 
@@ -104,6 +88,14 @@ const AddForm = () => {
                 onChange={handleChange}
             />
 
+            <TextField
+                label='Image link'
+                name='poster_path'
+                value={values.poster_path}
+                onChange={handleChange}
+                required
+            />
+
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Type</InputLabel>
                 <Select
@@ -118,19 +110,22 @@ const AddForm = () => {
                 </Select>
             </FormControl>
 
-            <FormControl>
-                <FormLabel required sx={{fontSize: '16px'}}>Release Date</FormLabel>
-                <TextField
-                type="date"
-                name='release_date'
+            <DesktopDatePicker
+                label='Release Date'
+                minDate={dayjs('2000-01-01')}
+                onChange={(newValue) => { setDate(newValue) }}
+                value={date}
+                renderInput={
+                    (params) => <TextField {...params} />
+                }
+            />
+
+            <FormControl
                 required
-                value={values.release_date}
-                onChange={handleChange}
-             />
-            </FormControl>
-
-
-            <FormControl required>
+                sx={{
+                    marginBottom: '10px'
+                }}
+            >
                 <FormLabel sx={{fontSize: '16px'}}>Rating (1-10)</FormLabel>
                 <Rating
                     name='vote_average'

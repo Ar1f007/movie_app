@@ -28,6 +28,7 @@ const style = {
 };
 
 const RightBar = ({ trending, fetchTrending, upcomingMovies, fetchUpcomingMovies }) => {
+
   useEffect(() => {
     fetchTrending();
     fetchUpcomingMovies();
@@ -43,15 +44,25 @@ const RightBar = ({ trending, fetchTrending, upcomingMovies, fetchUpcomingMovies
         Trending
       </Typography>
 
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <List sx={{
+        width: '100%',
+        maxWidth: 360,
+        bgcolor: 'background.paper'
+      }}
+      >
         {trending.data.slice(0, 5).map((item) => (
           <Fragment key={item.id}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar variant="square" alt={item.title} src={`${baseURL}/${item.poster_path}`} />
+                <Avatar
+                    variant="square"
+                    alt={item.title}
+                    src={`${baseURL}/${item.poster_path}`}
+                />
               </ListItemAvatar>
               <ListItemText primary={item.title || 'N/A'} sx={{
-                color: (theme) => theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800]
+                color: (theme) => theme.palette.mode === 'dark'
+                                  ? theme.palette.grey[300] : theme.palette.grey[800]
               }}/>
             </ListItem>
             <Divider variant="inset" component="li" />
@@ -63,16 +74,30 @@ const RightBar = ({ trending, fetchTrending, upcomingMovies, fetchUpcomingMovies
         Upcoming Movies
       </Typography>
 
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <List sx={{
+        width: '100%',
+        maxWidth: 360,
+        bgcolor: 'background.paper'
+      }}
+      >
         {upcomingMovies.data.slice(0, 5).map((item) => (
           <Fragment key={item.id}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar variant="square" alt={item.title} src={`${baseURL}/${item.poster_path}`} />
+                <Avatar
+                    variant="square"
+                    alt={item.title}
+                    src={`${baseURL}/${item.poster_path}`}
+                />
               </ListItemAvatar>
-              <ListItemText primary={item.title || 'N/A'} secondary={item.release_date} sx={{
-                color: (theme) => theme.palette.mode === 'dark' ? theme.palette.grey[300] : theme.palette.grey[800]
-              }} />
+              <ListItemText
+                  primary={item.title || 'N/A'}
+                  secondary={item.release_date}
+                  sx={{
+                    color: (theme) => theme.palette.mode === 'dark'
+                                      ? theme.palette.grey[300] : theme.palette.grey[800]
+                     }}
+              />
             </ListItem>
             <Divider variant="inset" component="li" />
           </Fragment>

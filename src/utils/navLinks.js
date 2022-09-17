@@ -8,7 +8,7 @@ export const links = [
     name: 'Movies',
   },
   {
-    path: '/tv-show',
+    path: '/tv-shows',
     name: 'TV Shows',
   },
   {

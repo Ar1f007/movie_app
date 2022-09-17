@@ -21,7 +21,7 @@ const Details = ({ detail, fetchDetails, fetching }) => {
 
   if (detail) {
     return (
-      <Container sx={{ py: 5 }}>
+      <Container sx={{ py: 5 }} minHeight='100vh'>
         <Stack
           direction={{
             xs: 'column',
@@ -30,15 +30,17 @@ const Details = ({ detail, fetchDetails, fetching }) => {
           spacing={5}
         >
           <Box width="100%" maxWidth="300" flex={1}>
-            <img src={`${baseURL}${detail?.poster_path}`} alt={detail.title} width="100%" />
+            <img
+                src={`${baseURL}${detail?.poster_path}`}
+                alt={detail.title} width="100%" />
           </Box>
           <Box flex={2}>
             <Stack>
               <Typography variant="h5">{detail.title}</Typography>
               <Typography variant="body2">
-                {detail.genres
+                { detail.genres
                   ?.map((genre) => <span key={genre.name}>{genre.name}</span>)
-                  .reduce((prev, curr) => [prev, ', ', curr])}
+                  .reduce((prev, curr) => [prev, ', ', curr]) }
               </Typography>
 
               <Typography component="i" variant="body2" my={3}>

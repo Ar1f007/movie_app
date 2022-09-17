@@ -3,9 +3,7 @@ import { useState } from 'react';
 import { Hero, LeftBar, RightBar, List, Footer } from '../components';
 
 const stickyStyle = {
-  position: {
-    lg: 'sticky',
-  },
+  position: { lg: 'sticky' },
   top: { lg: 10 },
 };
 
@@ -17,10 +15,17 @@ export const Home = () => {
       <Box component="main">
         <Hero />
 
-        <Stack direction={{ xs: 'column', lg: 'row' }} spacing={5} my={8}>
+        <Stack
+            direction={{ xs: 'column', lg: 'row' }}
+            spacing={5}
+            my={8}
+        >
           <Box flex={1} align="center">
             <Box sx={stickyStyle}>
-              <LeftBar type={selectedType} setType={setSelectedType} />
+              <LeftBar
+                  type={selectedType}
+                  setType={setSelectedType}
+              />
             </Box>
           </Box>
 

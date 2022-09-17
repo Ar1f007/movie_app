@@ -46,7 +46,15 @@ const List = ({ type, topRated, fetchData }) => {
         Popular {type === 'movie' ? 'movies' : 'tv shows'}
       </Typography>
 
-      <Grid container spacing={2} my={3} padding={{ xs: 2, lg: 0 }}>
+      <Grid
+          container
+          spacing={2}
+          my={3}
+          padding={{
+            xs: 2,
+            lg: 0
+          }}
+      >
         {topRated.data.map((item) => (
           <Grid
             item
@@ -60,7 +68,11 @@ const List = ({ type, topRated, fetchData }) => {
               cursor: 'pointer',
             }}
           >
-            <Card title={item.title} poster={item.poster_path} avg_rating={item.vote_average} />
+            <Card
+                title={item.title}
+                poster={item.poster_path}
+                avg_rating={item.vote_average}
+            />
           </Grid>
         ))}
       </Grid>
