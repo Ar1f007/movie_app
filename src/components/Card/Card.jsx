@@ -1,4 +1,4 @@
-import { CardContent, Typography, Card as Container, Chip, Stack } from '@mui/material';
+import { CardContent, Typography, Card as Container, Chip, Stack, CardMedia } from '@mui/material';
 import Image from 'mui-image';
 import dayjs from 'dayjs';
 const baseURL = process.env.REACT_APP_IMAGE_BASE_PATH;
@@ -16,13 +16,22 @@ export const Card = ({ title, poster, avg_rating, custom_add = false, release_da
       {/*        objectFit: 'cover'*/}
       {/*    }}*/}
       {/*/>*/}
-        <Image
-            src={custom_add ? `${poster}` : `${baseURL}/${poster}`}
-            width='100%'
+      {/*  <Image*/}
+      {/*      src={custom_add ? `${poster}` : `${baseURL}/${poster}`}*/}
+      {/*      width='100%'*/}
+      {/*      alt={title}*/}
+      {/*      fit='cover'*/}
+      {/*      loading='lazy'*/}
+      {/*      sx={{maxHeight: "270px"}}*/}
+      {/*  />*/}
+        <CardMedia
+            image={custom_add ? `${poster}` : `${baseURL}/${poster}`}
             alt={title}
-            fit='cover'
-            loading='lazy'
-            sx={{maxHeight: "270px"}}
+            sx={{
+                height: "300px",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+        }}
         />
       <CardContent>
         <Stack
